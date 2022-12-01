@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :locations, only: [:index, :show]
   # config/routes.rb
   namespace :api do
     namespace :v1 do

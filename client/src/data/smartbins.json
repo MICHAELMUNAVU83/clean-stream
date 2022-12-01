@@ -1,0 +1,41 @@
+{
+    "smartbins":[
+        {
+            "id":1,
+            "name":"Bin 1",
+            "location":"Kilimani",
+            "latitude":-1.283922,
+            "longitude":36.798107,
+            "capacity":100,
+            "lastUpdate":"2018-01-01 00:00:00"
+        },
+        {
+            "id":2,
+            "name":"Bin 2",
+            "location":"Lavington",
+            "latitude":-1.292201,
+            "longitude":36.764021,
+            "capacity":22,
+            "lastUpdate":"2018-01-01 00:00:00"
+        },
+        {
+            "id":3,
+            "name":"Bin 3",
+            "location":"Kileleshwa",
+            "latitude":-1.278319,
+            "longitude":36.784644,
+            "capacity":10,
+            "lastUpdate":"2018-01-01 00:00:00"
+        },
+        {
+            "id":4,
+            "name":"Bin 4",
+            "location":"Kasarani",
+            "latitude":-1.2208721,
+            "longitude":36.9012224,
+            "capacity":45,
+            "lastUpdate":"2018-01-01 00:00:00"
+        }
+
+    ]
+}

@@ -7,6 +7,19 @@ const NavBar = ({user, setStoredToken}) => {
         setStoredToken(null)
     }
 
+      // render good morning, afternoon and evening based on time
+
+    const greeting = () => {
+        let time = new Date().getHours();
+        if (time < 12) {
+            return "Good Morning"
+        } else if (time < 18) {
+            return "Good Afternoon"
+        } else {
+            return "Good Evening"
+        }
+    }
+
 
 
 
@@ -25,7 +38,7 @@ const NavBar = ({user, setStoredToken}) => {
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <i className="fas fa-bars"></i>
+     <span className="navbar-toggler-icon"></span>
     </button>
 
 
@@ -33,7 +46,11 @@ const NavBar = ({user, setStoredToken}) => {
 
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <a className="nav-link brandname" href="/">Clean Stream</a>
+          <a className="nav-link brandname" href="/">
+            {
+              user ? `${greeting()} ${user.name}` : "SmartBins"
+            }
+          </a>
         </li>
       </ul>
 
@@ -41,13 +58,7 @@ const NavBar = ({user, setStoredToken}) => {
       <div className="d-flex align-items-center">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item content">
-          <a className="nav-link" href="/about">About Us</a>
-        </li>
-        <li className="nav-item content">
-          <a className="nav-link" href="/projects">Projects</a>
-        </li>
-        <li className="nav-item content">
-          <a className="nav-link" href="/">Our Partners</a>
+          <a className="nav-link" href="/about">Clean Stream</a>
         </li>
       </ul>
         <button onClick={handleLogOut} type="button" className="btn btn-danger me-3">

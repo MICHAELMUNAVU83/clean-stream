@@ -55,8 +55,25 @@ body{
   background-color: var(--lightgreen);
 }
 
-
-
 .btn-danger{
   margin-left: 15px;
 }
+
+.map i{
+  font-size: 1.2rem;
+
+}
+
+/* .map-container{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.location-inputs{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  gap: 30px;
+} */
