@@ -1,31 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-function Hello({ setStoredToken }) {
-  const [name, setName] = useState("");
-  useEffect(() => {
-    fetch("/api/v1/profile ", {
-      method: "GET",
-      headers: {
-        Accepts: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setName(data.user.username));
-  }, []);
-
+function Hello({ user, setStoredToken }) {
+  
   return (
     <div>
-      Hello {name}
-      <button
-        onClick={() => {
-          localStorage.setItem("token", null);
-          setStoredToken(null);
-        }}
-      >
-        Log out
-      </button>
+      Hello {user? user.username : "Guest"}!
     </div>
   );
 }

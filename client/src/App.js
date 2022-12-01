@@ -3,6 +3,7 @@ import SignUp from "./SignUp";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Hello from "./Hello";
 import Login from "./Login";
+import NavBar from "./components/NavBar";
 
 function App() {
   const [storedToken, setStoredToken] = useState(localStorage.getItem("token"));
@@ -10,14 +11,32 @@ function App() {
     console.log(storedToken);
   }, [storedToken]);
 
+  // 
+
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    fetch("/api/v1/profile ", {
+      method: "GET",
+      headers: {
+        Accepts: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setUser(data.user));
+  }, []);
+
+
   return (
     <div>
       <Router>
+        <NavBar user={user} setStoredToken={setStoredToken} />
         <Routes>
           {storedToken ? (
             <Route
               path="/"
-              element={<Hello setStoredToken={setStoredToken} />}
+              element={<Hello user={user} setStoredToken={setStoredToken} />}
             />
           ) : (
             <Route

@@ -83,6 +83,7 @@ GEM
       irb (>= 1.3.6)
       reline (>= 0.3.1)
     erubi (1.11.0)
+    foreman (0.87.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -168,6 +169,7 @@ DEPENDENCIES
   bcrypt
   bootsnap
   debug
+  foreman (~> 0.87.2)
   jwt
   puma (~> 5.0)
   rack-cors
