@@ -1,13 +1,13 @@
 import React from "react";
 import NavBar from "./components/NavBar";
-import Map from "./components/Map";
+import MapBox from "./components/MapBox";
 
 function Home({ user, setStoredToken }) {
   
   return (
     <>
       <NavBar user={user} setStoredToken={setStoredToken} />
-      <Map user={user} />
+      <MapBox user={user} />
     </>
   );
 }

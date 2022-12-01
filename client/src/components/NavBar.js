@@ -47,7 +47,9 @@ const NavBar = ({user, setStoredToken}) => {
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
           <a className="nav-link brandname" href="/">
-            {greeting()} {user.username} 
+            {
+              user ? `${greeting()} ${user.name}` : "SmartBins"
+            }
           </a>
         </li>
       </ul>
