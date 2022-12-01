@@ -1,12 +1,17 @@
 import React from "react";
 import NavBar from "./components/NavBar";
 
-function Hello({ user, setUser }) {
+function Hello({ user, setStoredToken }) {
   
   return (
     <>
-      <NavBar user={user} setUser={setUser} />
-      Hello {user? user.username : "Guest"}!
+      <NavBar user={user} setStoredToken={setStoredToken} />
+     <p>
+        {
+          user  ? `Hello ${user.username}!` : "Hello Guest!"
+        }
+
+     </p>
     </>
   );
 }

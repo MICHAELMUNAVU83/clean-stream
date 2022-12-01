@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-function Login({ setUser }) {
+function Login({ setStoredToken }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -28,7 +28,7 @@ function Login({ setUser }) {
       .then((data) => {
         if (data.jwt) {
           localStorage.setItem("token", data.token);
-          setUser(data.token);
+          setStoredToken(data.token);
           navigate("/");
         } else {
           setErrors(data.errors);
@@ -62,9 +62,9 @@ function Login({ setUser }) {
                         type="username" 
                         name="username"  
                         className="form-control" 
-                        id="email" 
+                        id="username" 
                         aria-describedby="emailHelp" 
-                        placeholder="Enter email"
+                        placeholder="Enter username"
                         autoComplete='username'
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}

@@ -6,37 +6,52 @@ import Login from "./Login";
 import LandingPage from "./components/LandingPage";
 
 function App() {
+
+  const [storedToken, setStoredToken] = useState(localStorage.getItem("token"));
+  useEffect(() => {
+    console.log(storedToken);
+  }, [storedToken]);
  
   const [user, setUser] = useState(null);
+
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
+    if (storedToken) {
       fetch("/api/v1/profile", {
+        method: "GET",
         headers: {
-          Authorization: `Bearer ${token}`,
+          Accepts: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.token}`,
         },
       })
         .then((r) => r.json())
-        .then((user) => setUser(user));
+        .then((data) => setUser(data.user));
     }
-  }, []);
-
-
-
-  
-
-
+  }, [storedToken]);
 
   return (
     <>
+      <div>
       <Router>
         <Routes>
-          <Route path="/" element={<LandingPage user={user} setUser={setUser} />} />
-          <Route path="/signup" element={<SignUp setUser={setUser} />} />
-          <Route path="/login" element={<Login setUser={setUser} />} />
-          <Route path="/hello" element={<Hello user={user} setUser={setUser} />} />
+          {storedToken ? (
+            <Route
+              path="/"
+              element={<Hello user={user} setStoredToken={setStoredToken} />}
+            />
+          ) : (
+            <Route
+              path="/"
+              element={<SignUp setStoredToken={setStoredToken} />}
+            />
+          )}
+          <Route
+            path="/login"
+            element={<Login setStoredToken={setStoredToken} />}
+          />
         </Routes>
       </Router>
+    </div>
     </>
   );
 }

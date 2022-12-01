@@ -1,14 +1,11 @@
 import React from 'react'
 
-const NavBar = ({user, setUser}) => {
+const NavBar = ({user, setStoredToken}) => {
 
     const handleLogOut = () => {
         localStorage.setItem('token', null)
-        setUser(null)
+        setStoredToken(null)
     }
-
-
-
 
   return (
     <>
@@ -25,7 +22,7 @@ const NavBar = ({user, setUser}) => {
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <i className="fas fa-bars"></i>
+      <span className=""></span>
     </button>
 
 
