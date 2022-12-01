@@ -3,54 +3,41 @@ import SignUp from "./SignUp";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Hello from "./Hello";
 import Login from "./Login";
-import NavBar from "./components/NavBar";
+import LandingPage from "./components/LandingPage";
 
 function App() {
-  const [storedToken, setStoredToken] = useState(localStorage.getItem("token"));
-  useEffect(() => {
-    console.log(storedToken);
-  }, [storedToken]);
-
-  // 
-
+ 
   const [user, setUser] = useState(null);
   useEffect(() => {
-    fetch("/api/v1/profile ", {
-      method: "GET",
-      headers: {
-        Accepts: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setUser(data.user));
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetch("/api/v1/profile", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((r) => r.json())
+        .then((user) => setUser(user));
+    }
   }, []);
 
 
+
+  
+
+
+
   return (
-    <div>
+    <>
       <Router>
-        <NavBar user={user} setStoredToken={setStoredToken} />
         <Routes>
-          {storedToken ? (
-            <Route
-              path="/"
-              element={<Hello user={user} setStoredToken={setStoredToken} />}
-            />
-          ) : (
-            <Route
-              path="/"
-              element={<SignUp setStoredToken={setStoredToken} />}
-            />
-          )}
-          <Route
-            path="/login"
-            element={<Login setStoredToken={setStoredToken} />}
-          />
+          <Route path="/" element={<LandingPage user={user} setUser={setUser} />} />
+          <Route path="/signup" element={<SignUp setUser={setUser} />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route path="/hello" element={<Hello user={user} setUser={setUser} />} />
         </Routes>
       </Router>
-    </div>
+    </>
   );
 }
 

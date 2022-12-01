@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Login({ setStoredToken }) {
+function Login({ setUser }) {
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
@@ -25,7 +25,7 @@ function Login({ setStoredToken }) {
       .then((data) => {
         if (data.jwt) {
           localStorage.setItem("token", data.token);
-          setStoredToken(data.token);
+          setUser(data.token);
           navigate("/");
         } else {
           alert("Invalid credentials");
@@ -38,7 +38,7 @@ function Login({ setStoredToken }) {
   };
   return (
     <div className="App">
-      <h1>Create new user</h1>
+      <h1>Log In</h1>
       <form>
         <label>
           Username:
@@ -59,7 +59,8 @@ function Login({ setStoredToken }) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <button onClick={handleSubmit}>Submit</button>
+        <button onClick={handleSubmit}>LogIn</button>
+        
       </form>
     </div>
   );

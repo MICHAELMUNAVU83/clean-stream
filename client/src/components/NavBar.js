@@ -1,10 +1,10 @@
 import React from 'react'
 
-const NavBar = ({user, setStoredToken}) => {
+const NavBar = ({user, setUser}) => {
 
     const handleLogOut = () => {
         localStorage.setItem('token', null)
-        setStoredToken(null)
+        setUser(null)
     }
 
 

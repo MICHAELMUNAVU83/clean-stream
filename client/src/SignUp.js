@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-function SignUp({ setStoredToken }) {
+
+
+function SignUp({ setUser }) {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,7 +27,7 @@ function SignUp({ setStoredToken }) {
       .then((data) => {
         localStorage.setItem("token", data.token);
         console.log(data);
-        setStoredToken(data.token);
+        setUser(data.token);
       });
 
     setUsername("");
@@ -34,7 +36,7 @@ function SignUp({ setStoredToken }) {
   };
   return (
     <div className="App">
-      <h1>Create new user</h1>
+      <h1>Sign Up</h1>
       <form>
         <label>
           Username:
