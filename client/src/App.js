@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import SignUp from "./SignUp";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Hello from "./Hello";
+import Home from "./Home";
 import Login from "./Login";
 import LandingPage from "./components/LandingPage";
 
@@ -37,7 +37,7 @@ function App() {
           {storedToken ? (
             <Route
               path="/"
-              element={<Hello user={user} setStoredToken={setStoredToken} />}
+              element={<Home user={user} setStoredToken={setStoredToken} />}
             />
           ) : (
             <Route

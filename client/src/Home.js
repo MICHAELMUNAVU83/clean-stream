@@ -1,19 +1,15 @@
 import React from "react";
 import NavBar from "./components/NavBar";
+import Map from "./components/Map";
 
-function Hello({ user, setStoredToken }) {
+function Home({ user, setStoredToken }) {
   
   return (
     <>
       <NavBar user={user} setStoredToken={setStoredToken} />
-     <p>
-        {
-          user  ? `Hello ${user.username}!` : "Hello Guest!"
-        }
-
-     </p>
+      <Map user={user} />
     </>
   );
 }
 
-export default Hello;
+export default Home;
